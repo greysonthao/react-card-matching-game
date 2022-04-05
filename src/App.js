@@ -8,6 +8,11 @@ export default function App() {
 
   const [cards, setCards] = React.useState([]);
 
+  const [gameState, setGameState] = React.useState({
+    moves: 0,
+    users: 2,
+  });
+
   //CREATE AN EFFECT THAT CHECKS IF 2 CARDS HAVE isFlipped = true
   //If yes, then check if they match
   //If they don't match, then auto flip those cards back to isFlipped = false
@@ -57,21 +62,29 @@ export default function App() {
   function flipCard(id) {
     let newCardsArray = [...cards];
 
-    /* newCardsArray.map((card) => {
-      return card.id === id ? { ...card, isFlipped: !card.isFlipped } : card;
-    }); */
-
     for (let i = 0; i < newCardsArray.length; i++) {
       if (newCardsArray[i].id === id) {
-        console.log("before");
-        console.log(newCardsArray[i].isFlipped);
         newCardsArray[i].isFlipped = !newCardsArray[i].isFlipped;
-        console.log("after");
-        console.log(newCardsArray[i].isFlipped);
       }
     }
 
+    setGameState((prevGameState) => {
+      return {
+        ...prevGameState,
+        moves: prevGameState.moves + 1,
+      };
+    });
+
     setCards(newCardsArray);
+  }
+
+  function handleNewGame() {
+    setGameState({
+      moves: 0,
+      users: 2,
+    });
+
+    setCards(shuffleCards(generateAllCards(data)));
   }
 
   let cardsElement = cards.map((card) => {
@@ -99,10 +112,12 @@ export default function App() {
       <div className="points-and-btn-container">
         <div className="points-container">
           <h2 className="points-title">
-            # of Moves: <span className="points-number">10</span>
+            # of Moves: <span className="points-number">{gameState.moves}</span>
           </h2>
         </div>
-        <button className="new-game-btn">New Game</button>
+        <button className="new-game-btn" onClick={handleNewGame}>
+          New Game
+        </button>
       </div>
     </div>
   );
