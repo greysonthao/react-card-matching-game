@@ -13,9 +13,32 @@ export default function App() {
     users: 2,
   });
 
+  const [twoCardsFlipped, setTwoCardsFlipped] = React.useState(false);
+
+  React.useEffect(() => {
+    checkIfMatch();
+  }, [twoCardsFlipped]);
+
   //CREATE AN EFFECT THAT CHECKS IF 2 CARDS HAVE isFlipped = true
   //If yes, then check if they match
   //If they don't match, then auto flip those cards back to isFlipped = false
+  React.useEffect(() => {
+    let newCardsArray = [...cards];
+
+    let chosenCards = [];
+
+    for (let i = 0; i < newCardsArray.length; i++) {
+      if (newCardsArray[i].isFlipped === true) {
+        chosenCards.push(newCardsArray[i]);
+      }
+    }
+
+    if (chosenCards.length === 2) {
+      setTwoCardsFlipped(true);
+    } else {
+      setTwoCardsFlipped(false);
+    }
+  }, [cards]);
 
   React.useEffect(() => {
     setCards(shuffleCards(generateAllCards(data)));
@@ -26,7 +49,7 @@ export default function App() {
       id: nanoid(),
       name: dataElement.name,
       url: dataElement.url,
-      isFlipped: true,
+      isFlipped: false,
       matched: false,
     };
     return card;
@@ -65,6 +88,8 @@ export default function App() {
     for (let i = 0; i < newCardsArray.length; i++) {
       if (newCardsArray[i].id === id) {
         newCardsArray[i].isFlipped = !newCardsArray[i].isFlipped;
+        console.log(newCardsArray[i].name);
+        console.log(newCardsArray[i].isFlipped);
       }
     }
 
@@ -78,7 +103,7 @@ export default function App() {
     setCards(newCardsArray);
   }
 
-  function handleNewGame() {
+  function handleNewGameClick() {
     setGameState({
       moves: 0,
       users: 2,
@@ -86,6 +111,52 @@ export default function App() {
 
     setCards(shuffleCards(generateAllCards(data)));
   }
+
+  function checkIfMatch() {
+    let newCardsArray = [...cards];
+
+    let chosenCards = [];
+
+    for (let i = 0; i < newCardsArray.length; i++) {
+      if (newCardsArray[i].isFlipped === true) {
+        chosenCards.push(newCardsArray[i]);
+      }
+    }
+
+    console.log("chosenCards");
+    console.log(chosenCards);
+
+    if (chosenCards.length === 0) {
+      return console.log("chosenCards is empty");
+    }
+
+    if (
+      chosenCards[0].name === chosenCards[1].name &&
+      chosenCards[0].id !== chosenCards[1].id
+    ) {
+      chosenCards[0].matched = true;
+      chosenCards[1].matched = true;
+      chosenCards[0].isFlipped = false;
+      chosenCards[1].isFlipped = false;
+    } else {
+      chosenCards[0].isFlipped = false;
+      chosenCards[1].isFlipped = false;
+    }
+
+    for (let k = 0; k < chosenCards.length; k++) {
+      for (let i = 0; i < newCardsArray.length; i++) {
+        if (newCardsArray[i].id === chosenCards[k].id) {
+          newCardsArray[i] = chosenCards[k];
+          console.log(newCardsArray[i].name);
+          console.log(newCardsArray[i].isFlipped);
+        }
+      }
+    }
+
+    setCards(newCardsArray);
+  }
+
+  console.log("current state of twoCardsFlipped: " + twoCardsFlipped);
 
   let cardsElement = cards.map((card) => {
     return (
@@ -115,7 +186,7 @@ export default function App() {
             # of Moves: <span className="points-number">{gameState.moves}</span>
           </h2>
         </div>
-        <button className="new-game-btn" onClick={handleNewGame}>
+        <button className="new-game-btn" onClick={handleNewGameClick}>
           New Game
         </button>
       </div>
