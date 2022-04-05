@@ -8,6 +8,10 @@ export default function App() {
 
   const [cards, setCards] = React.useState([]);
 
+  //CREATE AN EFFECT THAT CHECKS IF 2 CARDS HAVE isFlipped = true
+  //If yes, then check if they match
+  //If they don't match, then auto flip those cards back to isFlipped = false
+
   React.useEffect(() => {
     setCards(shuffleCards(generateAllCards(data)));
   }, [data]);
@@ -17,7 +21,8 @@ export default function App() {
       id: nanoid(),
       name: dataElement.name,
       url: dataElement.url,
-      isFlipped: false,
+      isFlipped: true,
+      matched: false,
     };
     return card;
   }
@@ -56,16 +61,15 @@ export default function App() {
       return card.id === id ? { ...card, isFlipped: !card.isFlipped } : card;
     }); */
 
-    newCardsArray.map((card) => {
-      if (card.id === id) {
-        console.log("Card is flipped");
-        console.log(card.name);
-        console.log(card.isFlipped);
-        return { ...card, isFlipped: !card.isFlipped };
-      } else {
-        return card;
+    for (let i = 0; i < newCardsArray.length; i++) {
+      if (newCardsArray[i].id === id) {
+        console.log("before");
+        console.log(newCardsArray[i].isFlipped);
+        newCardsArray[i].isFlipped = !newCardsArray[i].isFlipped;
+        console.log("after");
+        console.log(newCardsArray[i].isFlipped);
       }
-    });
+    }
 
     setCards(newCardsArray);
   }
@@ -78,6 +82,7 @@ export default function App() {
         isFlipped={card.isFlipped}
         imageUrl={card.url}
         handleClick={() => flipCard(card.id)}
+        matched={card.matched}
       />
     );
   });
@@ -87,8 +92,7 @@ export default function App() {
       <div className="app-title-container">
         <h1 className="app-title">Memory Matching Game</h1>
         <h4 className="app-description">
-          Select two cards with the same image to earn a point. The user with
-          the most points, wins!
+          Find the matching images in the least number of moves.
         </h4>
       </div>
       <div className="board-container">{cardsElement}</div>
