@@ -1,4 +1,5 @@
 {
+  "homepage": "HTTP://tougerthao.github.io/react-card-matching-game",
   "name": "card-matching-game",
   "version": "0.1.0",
   "private": true,
@@ -6,6 +7,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^3.2.3",
     "nanoid": "^3.3.2",
     "react": "^17.0.2",
     "react-confetti": "^6.0.1",
@@ -14,6 +16,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "redeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
