@@ -58,6 +58,36 @@ body {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .card-container {
+    text-align: center;
+    margin: 4px;
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px 4px #dedede;
+    transition: 0.3s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .board-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: center;
+    align-items: stretch;
+    gap: 10px;
+
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 6px;
+  }
+}
+
 .points-and-btn-container {
   color: white;
   text-align: center;
