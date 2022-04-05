@@ -49,6 +49,27 @@ export default function App() {
     return array;
   }
 
+  function flipCard(id) {
+    let newCardsArray = [...cards];
+
+    /* newCardsArray.map((card) => {
+      return card.id === id ? { ...card, isFlipped: !card.isFlipped } : card;
+    }); */
+
+    newCardsArray.map((card) => {
+      if (card.id === id) {
+        console.log("Card is flipped");
+        console.log(card.name);
+        console.log(card.isFlipped);
+        return { ...card, isFlipped: !card.isFlipped };
+      } else {
+        return card;
+      }
+    });
+
+    setCards(newCardsArray);
+  }
+
   let cardsElement = cards.map((card) => {
     return (
       <Card
@@ -56,6 +77,7 @@ export default function App() {
         name={card.name}
         isFlipped={card.isFlipped}
         imageUrl={card.url}
+        handleClick={() => flipCard(card.id)}
       />
     );
   });
