@@ -217,7 +217,9 @@ export default function App() {
           Find the matching images in the least number of moves.
         </h4>
       </div>
-      <div className="board-container">{cardsElement}</div>
+      <div className="board-container-container">
+        <div className="board-container">{cardsElement}</div>
+      </div>
       <div className="points-and-btn-container">
         <div className="points-container">
           <h2 className="points-title">

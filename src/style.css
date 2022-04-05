@@ -8,6 +8,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  font-family: "Poppins", sans-serif;
 }
 
 .app-title-container {
@@ -23,7 +24,13 @@ body {
   font-weight: 400;
 }
 
+.board-container-container {
+  display: flex;
+  justify-content: center;
+}
+
 .board-container {
+  max-width: 800px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
