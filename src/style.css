@@ -25,8 +25,8 @@ body {
 
 .board-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   justify-items: center;
   align-items: stretch;
   gap: 1.5rem;

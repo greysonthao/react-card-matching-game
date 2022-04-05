@@ -3,8 +3,8 @@ export default {
   data: {
     cards: [
       {
-        name: "Simba",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/simba.png",
+        name: "Scar",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/scar.png",
       },
       {
         name: "Kion",
@@ -18,7 +18,7 @@ export default {
         name: "Bunga",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/bunga.png",
       },
-      /* {
+      {
         name: "Fuli",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/fuli.png",
       },
@@ -31,36 +31,37 @@ export default {
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/johari.png",
       },
       {
+        name: "Kenge",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/kenge.png",
+      },
+      {
+        name: "Makuu",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/makuu.png",
+      },
+      {
+        name: "Rafiki",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/rafiki.png",
+      },
+      /*{
+        name: "Rani",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/rani.png",
+      },
+
+      {
         name: "Kambuni",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/kambuni.png",
       },
       {
-        name: "Kenge",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/kenge.png",
+        name: "Vitani",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/vitani-1.png",
       },
-      {,
+      {
         name: "Kiara",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/kiara.png",
       },
-      {,
-        name: "Makuu",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/makuu.png",
-      },
-      {,
-        name: "Rafiki",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/rafiki.png",
-      },
-      {,
-        name: "Rani",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/rani.png",
-      },
-      {,
-        name: "Scar",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/scar.png",
-      },
-      {,
-        name: "Vitani",
-        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/vitani-1.png",
+      {
+        name: "Simba",
+        url: "https://www.tougerthao.com/wp-content/uploads/2022/04/simba.png",
       }, */
     ],
   },

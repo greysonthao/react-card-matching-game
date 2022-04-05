@@ -2,6 +2,7 @@ import React from "react";
 import Card from "./components/Card";
 import lionGuardData from "../src/data";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 export default function App() {
   const [data, setData] = React.useState(lionGuardData.data.cards);
@@ -10,10 +11,45 @@ export default function App() {
 
   const [gameState, setGameState] = React.useState({
     moves: 0,
+    active: true,
     users: 2,
   });
 
   const [twoCardsFlipped, setTwoCardsFlipped] = React.useState(false);
+
+  React.useEffect(() => {
+    let newCardsArray = [...cards];
+
+    if (newCardsArray.length === 0) {
+      return console.log("No cards are set yet");
+    }
+
+    let chosenCards = [];
+
+    for (let i = 0; i < newCardsArray.length; i++) {
+      if (newCardsArray[i].matched === true) {
+        chosenCards.push(newCardsArray[i]);
+      }
+    }
+
+    console.log("newCardsArray");
+    console.log(newCardsArray);
+
+    console.log("chosenCards");
+    console.log(chosenCards);
+
+    if (newCardsArray.length === chosenCards.length) {
+      console.log("GAME IS OVER");
+      setGameState((prevGameState) => {
+        return {
+          ...prevGameState,
+          active: false,
+        };
+      });
+    }
+  }, [cards]);
+
+  console.log(gameState);
 
   React.useEffect(() => {
     checkIfMatch();
@@ -55,6 +91,12 @@ export default function App() {
     return card;
   }
 
+  function delay(n) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, n * 1000);
+    });
+  }
+
   function generateAllCards(data) {
     let newCards = [];
     shuffleCards(data);
@@ -88,8 +130,6 @@ export default function App() {
     for (let i = 0; i < newCardsArray.length; i++) {
       if (newCardsArray[i].id === id) {
         newCardsArray[i].isFlipped = !newCardsArray[i].isFlipped;
-        console.log(newCardsArray[i].name);
-        console.log(newCardsArray[i].isFlipped);
       }
     }
 
@@ -106,13 +146,14 @@ export default function App() {
   function handleNewGameClick() {
     setGameState({
       moves: 0,
+      active: true,
       users: 2,
     });
 
     setCards(shuffleCards(generateAllCards(data)));
   }
 
-  function checkIfMatch() {
+  async function checkIfMatch() {
     let newCardsArray = [...cards];
 
     let chosenCards = [];
@@ -123,12 +164,12 @@ export default function App() {
       }
     }
 
-    console.log("chosenCards");
-    console.log(chosenCards);
-
     if (chosenCards.length === 0) {
       return console.log("chosenCards is empty");
     }
+
+    //2 SECOND DELAY BEFORE FLIPPING THE CARDS BACK
+    await delay(1);
 
     if (
       chosenCards[0].name === chosenCards[1].name &&
@@ -147,16 +188,12 @@ export default function App() {
       for (let i = 0; i < newCardsArray.length; i++) {
         if (newCardsArray[i].id === chosenCards[k].id) {
           newCardsArray[i] = chosenCards[k];
-          console.log(newCardsArray[i].name);
-          console.log(newCardsArray[i].isFlipped);
         }
       }
     }
 
     setCards(newCardsArray);
   }
-
-  console.log("current state of twoCardsFlipped: " + twoCardsFlipped);
 
   let cardsElement = cards.map((card) => {
     return (
@@ -175,6 +212,7 @@ export default function App() {
     <div className="app-container">
       <div className="app-title-container">
         <h1 className="app-title">Memory Matching Game</h1>
+        {!gameState.active && <Confetti />}
         <h4 className="app-description">
           Find the matching images in the least number of moves.
         </h4>
