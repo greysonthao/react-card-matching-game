@@ -2,25 +2,25 @@
   box-sizing: border-box;
 }
 
-@import url("http://fonts.cdnfonts.com/css/lion-king");
-
 body {
   margin: 15px;
   background-image: url(./images/background.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Times New Roman", sans-serif;
   background-color: #8b0000;
 }
 
 .app-title-container {
-  font-family: "Lion kinG", sans-serif;
   color: white;
   text-align: center;
   padding-top: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 4px;
+  padding-right: 4px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .board-container-container {
@@ -188,8 +188,38 @@ body {
 .app-title-lion-guard > h1,
 .app-title-lion-guard > h2 {
   margin: 0;
+  font-family: "Times New Roman", TimesNewRoman, Times, serif;
+  font-size: 7em;
+  font-weight: 100;
+  line-height: 0.6em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.app-title-lion-guard > h2 {
+  font-size: 5em;
 }
 
 .app-title {
   padding-bottom: 20px;
+}
+
+.app-title-lion-guard > h1 > SPAN:first-of-type,
+.app-title-lion-guard > h2 > SPAN:first-of-type {
+  font-size: 34%;
+  letter-spacing: 0.2em;
+}
+
+SPAN.overline {
+  font-size: 70%;
+  letter-spacing: 0.01em;
+  text-decoration: overline;
+}
+
+.app-matching-game-title {
+  margin-top: 10px;
+  font-weight: 100;
+  line-height: 0.6em;
+  text-align: center;
+  text-transform: uppercase;
 }

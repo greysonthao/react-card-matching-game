@@ -46,9 +46,6 @@ export default function App() {
     checkIfMatch();
   }, [twoCardsFlipped]);
 
-  //CREATE AN EFFECT THAT CHECKS IF 2 CARDS HAVE isFlipped = true
-  //If yes, then check if they match
-  //If they don't match, then auto flip those cards back to isFlipped = false
   React.useEffect(() => {
     let newCardsArray = [...cards];
 
@@ -204,9 +201,18 @@ export default function App() {
       {!gameState.active && <Confetti />}
       <div className="app-title-container">
         <div className="app-title-lion-guard">
-          <h2>the</h2>
-          <h1>Lion GuarD</h1>
-          <h2 className="app-title">matching game</h2>
+          <h2>
+            <span>The</span>
+            <br />
+            <span>
+              L
+              <span class="overline">
+                ion&nbsp;G<span>u</span>ar
+              </span>
+              d
+            </span>
+          </h2>
+          <h3 className="app-matching-game-title">MATCHING GAME</h3>
         </div>
       </div>
       <div className="board-container-container">
