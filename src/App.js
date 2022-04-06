@@ -206,7 +206,7 @@ export default function App() {
             <br />
             <span>
               L
-              <span class="overline">
+              <span className="overline">
                 ion&nbsp;G<span>u</span>ar
               </span>
               d
