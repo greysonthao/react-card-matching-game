@@ -42,7 +42,7 @@ export default {
         name: "Rafiki",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/rafiki.png",
       },
-      /*{
+      {
         name: "Rani",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/rani.png",
       },
@@ -51,7 +51,7 @@ export default {
         name: "Kambuni",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/kambuni.png",
       },
-      {
+      /*{
         name: "Vitani",
         url: "https://www.tougerthao.com/wp-content/uploads/2022/04/vitani-1.png",
       },

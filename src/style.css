@@ -4,24 +4,21 @@
 
 body {
   margin: 15px;
-  background-image: url(./images/background-dark.png);
+  background-image: url(./images/background.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: #8b0000;
 }
 
 .app-title-container {
-  font-family: "Poppins", sans-serif;
+  font-family: "Lion kinG", sans-serif;
   color: white;
   text-align: center;
   padding-top: 20px;
   padding-left: 50px;
   padding-right: 50px;
-}
-
-.app-description {
-  font-weight: 400;
 }
 
 .board-container-container {
@@ -30,10 +27,9 @@ body {
 }
 
 .board-container {
-  max-width: 800px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   justify-items: center;
   align-items: stretch;
   gap: 1.5rem;
@@ -52,16 +48,17 @@ body {
   height: 100%;
   border-radius: 4px;
   box-shadow: 2px 2px 4px 4px #dedede;
-  transition: 0.3s;
+  transition: 1s;
   transform-style: preserve-3d;
   position: relative;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+/* for phones */
+@media only screen and (max-width: 480px) {
   .card-container {
     text-align: center;
-    margin: 4px;
+    margin: 1px;
     width: 100px;
     height: 100px;
     border-radius: 4px;
@@ -74,14 +71,53 @@ body {
 
   .board-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    max-width: 700px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     justify-items: center;
-    align-items: stretch;
-    gap: 10px;
+    align-items: center;
+    gap: 7px;
 
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
+    background-color: white;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 6px;
+  }
+}
+
+/* for tablets */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .card-container {
+    text-align: center;
+    margin: 1px;
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px 4px #dedede;
+    transition: 0.3s;
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .card-img,
+  .card-img-empty {
+    width: 100px;
+    height: 100px;
+  }
+
+  .board-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    justify-items: center;
+    /* align-items: stretch; */
+    align-items: center;
+    gap: 7px;
+
+    padding: 10px;
+    margin: 5px;
     background-color: white;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 6px;
@@ -94,39 +130,37 @@ body {
 }
 
 .new-game-btn {
-  align-items: center;
-  background-clip: padding-box;
-  background-color: #fa6400;
-  border: 1px solid transparent;
-  border-radius: 0.4rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
-    Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 1.25;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   margin: 0;
-  min-height: 3rem;
-  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 20px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    #6f0000 0%,
+    #ac0300 51%,
+    #b19f00 100% /* #84fab0 0%,
+    #8fd3f4 51%,
+    #84fab0 100% */
+  );
 }
 
-.new-game-btn:hover,
-.new-game-btn:focus {
-  background-color: #fb8332;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+.new-game-btn:hover/* ,
+.new-game-btn:focus */ {
+  /*   background-color: #fb8332;
+ */
+  background-position: right center;
+  /*   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+ */
 }
 
 .new-game-btn:hover {
@@ -147,4 +181,13 @@ body {
 
 .card-img-empty {
   cursor: default;
+}
+
+.app-title-lion-guard > h1,
+.app-title-lion-guard > h2 {
+  margin: 0;
+}
+
+.app-title {
+  padding-bottom: 20px;
 }

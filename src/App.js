@@ -21,7 +21,7 @@ export default function App() {
     let newCardsArray = [...cards];
 
     if (newCardsArray.length === 0) {
-      return console.log("No cards are set yet");
+      return;
     }
 
     let chosenCards = [];
@@ -32,14 +32,7 @@ export default function App() {
       }
     }
 
-    console.log("newCardsArray");
-    console.log(newCardsArray);
-
-    console.log("chosenCards");
-    console.log(chosenCards);
-
     if (newCardsArray.length === chosenCards.length) {
-      console.log("GAME IS OVER");
       setGameState((prevGameState) => {
         return {
           ...prevGameState,
@@ -48,8 +41,6 @@ export default function App() {
       });
     }
   }, [cards]);
-
-  console.log(gameState);
 
   React.useEffect(() => {
     checkIfMatch();
@@ -165,11 +156,11 @@ export default function App() {
     }
 
     if (chosenCards.length === 0) {
-      return console.log("chosenCards is empty");
+      return;
     }
 
     //2 SECOND DELAY BEFORE FLIPPING THE CARDS BACK
-    await delay(1);
+    await delay(2);
 
     if (
       chosenCards[0].name === chosenCards[1].name &&
@@ -210,16 +201,18 @@ export default function App() {
 
   return (
     <div className="app-container">
+      {!gameState.active && <Confetti />}
       <div className="app-title-container">
-        <h1 className="app-title">Memory Matching Game</h1>
-        {!gameState.active && <Confetti />}
-        <h4 className="app-description">
-          Find the matching images in the least number of moves.
-        </h4>
+        <div className="app-title-lion-guard">
+          <h2>the</h2>
+          <h1>Lion GuarD</h1>
+          <h2 className="app-title">matching game</h2>
+        </div>
       </div>
       <div className="board-container-container">
         <div className="board-container">{cardsElement}</div>
       </div>
+      {!gameState.active && <Confetti />}
       <div className="points-and-btn-container">
         <div className="points-container">
           <h2 className="points-title">
