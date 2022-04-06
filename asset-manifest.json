@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-card-matching-game/static/css/main.acf976de.css",
+    "main.css": "/react-card-matching-game/static/css/main.da113812.css",
     "main.js": "/react-card-matching-game/static/js/main.00f98f33.js",
     "static/media/background.png": "/react-card-matching-game/static/media/background.35e2961bf4ebcdef47a9.png",
     "static/media/lion-guard.png": "/react-card-matching-game/static/media/lion-guard.123694bd99c1c66153aa.png",
     "index.html": "/react-card-matching-game/index.html",
-    "main.acf976de.css.map": "/react-card-matching-game/static/css/main.acf976de.css.map",
+    "main.da113812.css.map": "/react-card-matching-game/static/css/main.da113812.css.map",
     "main.00f98f33.js.map": "/react-card-matching-game/static/js/main.00f98f33.js.map"
   },
   "entrypoints": [
-    "static/css/main.acf976de.css",
+    "static/css/main.da113812.css",
     "static/js/main.00f98f33.js"
   ]
 }
