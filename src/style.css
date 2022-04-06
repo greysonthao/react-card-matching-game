@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+@import url("http://fonts.cdnfonts.com/css/lion-king");
+
 body {
   margin: 15px;
   background-image: url(./images/background.png);
