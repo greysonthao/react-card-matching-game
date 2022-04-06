@@ -15,7 +15,6 @@ body {
 .app-title-container {
   color: white;
   text-align: center;
-  padding-top: 20px;
   padding-left: 4px;
   padding-right: 4px;
   display: block;
@@ -31,7 +30,7 @@ body {
 .board-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   align-items: stretch;
   gap: 0.25rem;
@@ -75,46 +74,9 @@ body {
     display: grid;
     max-width: 700px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    justify-items: center;
-    align-items: stretch;
-    gap: 7px;
-
-    padding: 10px;
-    margin: 5px;
-    background-color: white;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    border-radius: 6px;
-  }
-}
-
-/* for tablets */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .card-container {
-    text-align: center;
-    margin: 1px;
-    width: 110px;
-    height: 110px;
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px 4px #dedede;
-    transition: 0.3s;
-    transform-style: preserve-3d;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .card-img,
-  .card-img-empty {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .board-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     justify-items: center;
-    align-items: center;
+    align-items: stretch;
     gap: 7px;
 
     padding: 10px;
@@ -199,16 +161,17 @@ body {
 
 .app-title {
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .app-title-lion-guard > h1 > SPAN:first-of-type,
 .app-title-lion-guard > h2 > SPAN:first-of-type {
-  font-size: 34%;
+  font-size: 24%;
   letter-spacing: 0.2em;
 }
 
 SPAN.overline {
-  font-size: 70%;
+  font-size: 50%;
   letter-spacing: 0.01em;
   text-decoration: overline;
 }

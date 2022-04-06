@@ -192,6 +192,7 @@ export default function App() {
         imageUrl={card.url}
         handleClick={() => flipCard(card.id)}
         matched={card.matched}
+        twoCardsFlipped={twoCardsFlipped}
       />
     );
   });
@@ -202,7 +203,7 @@ export default function App() {
       <div className="app-title-container">
         <div className="app-title-lion-guard">
           <h2>
-            <span>The</span>
+            <span></span>
             <br />
             <span>
               L
