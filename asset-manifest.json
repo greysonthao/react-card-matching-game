@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-card-matching-game/static/css/main.da21bd3c.css",
-    "main.js": "/react-card-matching-game/static/js/main.f1ec85ce.js",
+    "main.css": "/react-card-matching-game/static/css/main.7ade0b34.css",
+    "main.js": "/react-card-matching-game/static/js/main.34a87b9a.js",
     "static/media/background.png": "/react-card-matching-game/static/media/background.35e2961bf4ebcdef47a9.png",
     "static/media/lion-guard.png": "/react-card-matching-game/static/media/lion-guard.123694bd99c1c66153aa.png",
     "index.html": "/react-card-matching-game/index.html",
-    "main.da21bd3c.css.map": "/react-card-matching-game/static/css/main.da21bd3c.css.map",
-    "main.f1ec85ce.js.map": "/react-card-matching-game/static/js/main.f1ec85ce.js.map"
+    "main.7ade0b34.css.map": "/react-card-matching-game/static/css/main.7ade0b34.css.map",
+    "main.34a87b9a.js.map": "/react-card-matching-game/static/js/main.34a87b9a.js.map"
   },
   "entrypoints": [
-    "static/css/main.da21bd3c.css",
-    "static/js/main.f1ec85ce.js"
+    "static/css/main.7ade0b34.css",
+    "static/js/main.34a87b9a.js"
   ]
 }
