@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import lionGuardData from "../src/data";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import Points from "./components/Points";
 
 export default function App() {
   const [data, setData] = React.useState(lionGuardData.data.cards);
@@ -244,24 +245,6 @@ export default function App() {
     setCards(newCardsArray);
   }
 
-  let stylesOne;
-  let stylesTwo;
-
-  if (gameState.playerOneTurn) {
-    stylesOne = {
-      fontWeight: "bold",
-      fontSize: "27px",
-    };
-  } else {
-    stylesTwo = {
-      fontWeight: "bold",
-      fontSize: "27px",
-    };
-  }
-
-  console.log("player 1 turn");
-  console.log(gameState.playerOneTurn);
-
   let cardsElement = cards.map((card) => {
     return (
       <Card
@@ -289,13 +272,9 @@ export default function App() {
     <div className="app-container">
       {!gameState.activeGame && <Confetti />}
       <Header />
-      {/*       <h3 className="player-turn">
-        {gameState.playerOneTurn ? "Player One's Turn" : "Player Two's Turn"}
-      </h3> */}
       <div className="board-container-container">
         <div className="board-container">{cardsElement}</div>
       </div>
-      {!gameState.activeGame && <Confetti />}
       <div className="points-and-btn-container">
         <div className="points-container">
           {gameState.users === 1 && (
@@ -304,22 +283,7 @@ export default function App() {
               <span className="points-number">{gameState.numOfTurns}</span>
             </h2>
           )}
-          {gameState.users === 2 && (
-            <div className="two-player-points-container">
-              <h3 className="user-1-points">
-                <span style={stylesOne}>Player One</span>:{" "}
-                <span className="points-number">
-                  {gameState.playerOneScore}
-                </span>
-              </h3>
-              <h3 className="user-2-points">
-                <span style={stylesTwo}>Player Two</span>:{" "}
-                <span className="points-number">
-                  {gameState.playerTwoScore}
-                </span>
-              </h3>
-            </div>
-          )}
+          {gameState.users === 2 && <Points gameState={gameState} />}
         </div>
         <button className="new-game-btn" onClick={handleNewGameClick}>
           New Game

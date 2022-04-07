@@ -98,6 +98,10 @@ body {
   }
 }
 
+.points-title {
+  font-family: "Inter", sans-serif;
+}
+
 .points-and-btn-container {
   color: white;
   text-align: center;
@@ -214,7 +218,6 @@ SPAN.overline {
 .start-container {
   max-width: 350px;
   margin-top: 50px;
-  margin-bottom: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
