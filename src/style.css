@@ -86,6 +86,16 @@ body {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 6px;
   }
+
+  .two-player-points-container {
+    display: flex;
+    width: 340px;
+    margin: 0 50px 0 100px;
+  }
+
+  .user-2-points {
+    margin-left: auto;
+  }
 }
 
 .points-and-btn-container {
@@ -204,6 +214,7 @@ SPAN.overline {
 .start-container {
   max-width: 350px;
   margin-top: 50px;
+  margin-bottom: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -223,4 +234,20 @@ SPAN.overline {
   margin: 15px auto 30px auto;
   font-weight: 600;
   text-align: left;
+}
+
+.two-player-points-container {
+  display: flex;
+  max-width: 700px;
+  margin: 0 auto;
+
+  font-family: "Inter", sans-serif;
+}
+
+.user-2-points {
+  margin-left: auto;
+}
+
+.player-turn {
+  text-align: center;
 }

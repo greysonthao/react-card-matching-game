@@ -3,8 +3,8 @@ import Select from "react-select";
 
 export default function Start(props) {
   const [players, setPlayers] = React.useState({
-    value: 1,
-    label: "1 Player",
+    value: 0,
+    label: "",
   });
 
   const options = [

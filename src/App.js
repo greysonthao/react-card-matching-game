@@ -14,11 +14,29 @@ export default function App() {
   const [gameState, setGameState] = React.useState({
     startGame: false,
     moves: 0,
-    active: true,
-    users: 2,
+    activeGame: true,
+    users: 0,
+    numOfTurns: 0,
+    playerOneTurn: true,
+    playerOneScore: 0,
+    playerTwoScore: 0,
   });
 
   const [twoCardsFlipped, setTwoCardsFlipped] = React.useState(false);
+
+  React.useEffect(() => {
+    if (gameState.moves !== 0 && gameState.moves % 2 === 0) {
+      setGameState((prevGameState) => {
+        return {
+          ...prevGameState,
+          numOfTurns: prevGameState.numOfTurns + 1,
+        };
+      });
+    }
+  }, [gameState.moves]);
+
+  console.log("gameState");
+  console.log(gameState);
 
   React.useEffect(() => {
     let newCardsArray = [...cards];
@@ -39,7 +57,7 @@ export default function App() {
       setGameState((prevGameState) => {
         return {
           ...prevGameState,
-          active: false,
+          activeGame: false,
         };
       });
     }
@@ -137,8 +155,13 @@ export default function App() {
   function handleNewGameClick() {
     setGameState({
       moves: 0,
-      active: true,
-      users: 2,
+      activeGame: true,
+      users: 0,
+      numOfTurns: 0,
+      startGame: false,
+      playerOneTurn: true,
+      playerOneScore: 0,
+      playerTwoScore: 0,
     });
 
     setCards(shuffleCards(generateAllCards(data)));
@@ -149,16 +172,22 @@ export default function App() {
       setGameState({
         startGame: true,
         moves: 0,
-        active: true,
+        activeGame: true,
         users: numOfPlayers,
+        numOfTurns: 0,
+        playerOneTurn: true,
+        playerOneScore: 0,
+        playerTwoScore: 0,
       });
     } else {
-      return console.log("No num of players selected");
+      return;
     }
   }
 
   async function checkIfMatch() {
     let newCardsArray = [...cards];
+
+    let newGameState = { ...gameState };
 
     let chosenCards = [];
 
@@ -183,6 +212,11 @@ export default function App() {
       chosenCards[1].matched = true;
       chosenCards[0].isFlipped = false;
       chosenCards[1].isFlipped = false;
+      if (gameState.playerOneTurn) {
+        newGameState.playerOneScore += 1;
+      } else {
+        newGameState.playerTwoScore += 1;
+      }
     } else {
       chosenCards[0].isFlipped = false;
       chosenCards[1].isFlipped = false;
@@ -196,8 +230,37 @@ export default function App() {
       }
     }
 
+    if (
+      (newGameState.playerOneTurn &&
+        newGameState.playerOneScore === gameState.playerOneScore) ||
+      (!newGameState.playerOneTurn &&
+        newGameState.playerTwoScore === gameState.playerTwoScore)
+    ) {
+      newGameState.playerOneTurn = !newGameState.playerOneTurn;
+    }
+
+    setGameState(newGameState);
+
     setCards(newCardsArray);
   }
+
+  let stylesOne;
+  let stylesTwo;
+
+  if (gameState.playerOneTurn) {
+    stylesOne = {
+      fontWeight: "bold",
+      fontSize: "27px",
+    };
+  } else {
+    stylesTwo = {
+      fontWeight: "bold",
+      fontSize: "27px",
+    };
+  }
+
+  console.log("player 1 turn");
+  console.log(gameState.playerOneTurn);
 
   let cardsElement = cards.map((card) => {
     return (
@@ -224,17 +287,39 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {!gameState.active && <Confetti />}
+      {!gameState.activeGame && <Confetti />}
       <Header />
+      {/*       <h3 className="player-turn">
+        {gameState.playerOneTurn ? "Player One's Turn" : "Player Two's Turn"}
+      </h3> */}
       <div className="board-container-container">
         <div className="board-container">{cardsElement}</div>
       </div>
-      {!gameState.active && <Confetti />}
+      {!gameState.activeGame && <Confetti />}
       <div className="points-and-btn-container">
         <div className="points-container">
-          <h2 className="points-title">
-            # of Moves: <span className="points-number">{gameState.moves}</span>
-          </h2>
+          {gameState.users === 1 && (
+            <h2 className="points-title">
+              # of Turns:{" "}
+              <span className="points-number">{gameState.numOfTurns}</span>
+            </h2>
+          )}
+          {gameState.users === 2 && (
+            <div className="two-player-points-container">
+              <h3 className="user-1-points">
+                <span style={stylesOne}>Player One</span>:{" "}
+                <span className="points-number">
+                  {gameState.playerOneScore}
+                </span>
+              </h3>
+              <h3 className="user-2-points">
+                <span style={stylesTwo}>Player Two</span>:{" "}
+                <span className="points-number">
+                  {gameState.playerTwoScore}
+                </span>
+              </h3>
+            </div>
+          )}
         </div>
         <button className="new-game-btn" onClick={handleNewGameClick}>
           New Game
