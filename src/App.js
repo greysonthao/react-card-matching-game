@@ -25,6 +25,26 @@ export default function App() {
 
   const [twoCardsFlipped, setTwoCardsFlipped] = React.useState(false);
 
+  const [screenSize, getDimension] = React.useState({
+    dynamicWidth: window.innerWidth,
+    dynamicHeight: window.innerHeight,
+  });
+
+  const setDimension = () => {
+    getDimension({
+      dynamicWidth: window.innerWidth,
+      dynamicHeight: window.innerHeight,
+    });
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("resize", setDimension);
+
+    return () => {
+      window.removeEventListener("resize", setDimension);
+    };
+  }, [screenSize]);
+
   React.useEffect(() => {
     if (gameState.moves !== 0 && gameState.moves % 2 === 0) {
       setGameState((prevGameState) => {
@@ -245,6 +265,10 @@ export default function App() {
     setCards(newCardsArray);
   }
 
+  console.log("window");
+  console.log(screenSize.dynamicHeight);
+  console.log(screenSize.dynamicWidth);
+
   let cardsElement = cards.map((card) => {
     return (
       <Card
@@ -270,7 +294,12 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {!gameState.activeGame && <Confetti />}
+      {!gameState.activeGame && (
+        <Confetti
+          width={screenSize.dynamicWidth}
+          height={screenSize.dynamicHeighth}
+        />
+      )}
       <Header />
       <div className="board-container-container">
         <div className="board-container">{cardsElement}</div>
