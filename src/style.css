@@ -114,10 +114,9 @@ body {
     to right,
     #6f0000 0%,
     #ac0300 51%,
-    #b19f00 100% /* #84fab0 0%,
-    #8fd3f4 51%,
-    #84fab0 100% */
+    #b19f00 100%
   );
+  cursor: pointer;
 }
 
 .new-game-btn:hover {

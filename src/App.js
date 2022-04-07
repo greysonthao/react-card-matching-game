@@ -10,6 +10,7 @@ export default function App() {
   const [cards, setCards] = React.useState([]);
 
   const [gameState, setGameState] = React.useState({
+    startGame: false,
     moves: 0,
     active: true,
     users: 2,
@@ -157,7 +158,7 @@ export default function App() {
     }
 
     //2 SECOND DELAY BEFORE FLIPPING THE CARDS BACK
-    await delay(2);
+    await delay(1.75);
 
     if (
       chosenCards[0].name === chosenCards[1].name &&
@@ -216,6 +217,7 @@ export default function App() {
           <h3 className="app-matching-game-title">MATCHING GAME</h3>
         </div>
       </div>
+
       <div className="board-container-container">
         <div className="board-container">{cardsElement}</div>
       </div>
