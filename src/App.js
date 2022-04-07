@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "./components/Card";
+import Start from "./components/Start";
+import Header from "./components/Header";
 import lionGuardData from "../src/data";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
@@ -142,6 +144,19 @@ export default function App() {
     setCards(shuffleCards(generateAllCards(data)));
   }
 
+  function handlePlayers(numOfPlayers) {
+    if (numOfPlayers === 1 || numOfPlayers === 2) {
+      setGameState({
+        startGame: true,
+        moves: 0,
+        active: true,
+        users: numOfPlayers,
+      });
+    } else {
+      return console.log("No num of players selected");
+    }
+  }
+
   async function checkIfMatch() {
     let newCardsArray = [...cards];
 
@@ -198,26 +213,19 @@ export default function App() {
     );
   });
 
+  if (!gameState.startGame) {
+    return (
+      <div className="app-container">
+        <Header />
+        <Start handlePlayers={handlePlayers} gameState={gameState} />
+      </div>
+    );
+  }
+
   return (
     <div className="app-container">
       {!gameState.active && <Confetti />}
-      <div className="app-title-container">
-        <div className="app-title-lion-guard">
-          <h2>
-            <span></span>
-            <br />
-            <span>
-              L
-              <span className="overline">
-                ion&nbsp;G<span>u</span>ar
-              </span>
-              d
-            </span>
-          </h2>
-          <h3 className="app-matching-game-title">MATCHING GAME</h3>
-        </div>
-      </div>
-
+      <Header />
       <div className="board-container-container">
         <div className="board-container">{cardsElement}</div>
       </div>

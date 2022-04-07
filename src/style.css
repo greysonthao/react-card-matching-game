@@ -20,6 +20,7 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.5);
 }
 
 .board-container-container {
@@ -95,7 +96,9 @@ body {
   margin-right: auto;
 }
 
-.new-game-btn {
+.new-game-btn,
+.start-game-btn {
+  max-width: 160px;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   margin: 0;
@@ -107,7 +110,6 @@ body {
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
-  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   background-image: linear-gradient(
@@ -119,15 +121,24 @@ body {
   cursor: pointer;
 }
 
-.new-game-btn:hover {
+.start-game-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.new-game-btn:hover,
+.start-game-btn:hover {
   background-position: right center;
 }
 
-.new-game-btn:hover {
+.new-game-btn:hover,
+.start-game-btn:hover {
   transform: translateY(-1px);
 }
 
-.new-game-btn:active {
+.new-game-btn:active,
+.start-game-btn:active {
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);
@@ -188,4 +199,28 @@ SPAN.overline {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.start-container {
+  max-width: 350px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.start-container > h1 {
+  color: white;
+  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.7);
+}
+
+.select-menu {
+  font-family: "Poppins", sans-serif;
+  width: 285px;
+  margin: 15px auto 30px auto;
+  font-weight: 600;
+  text-align: left;
 }
