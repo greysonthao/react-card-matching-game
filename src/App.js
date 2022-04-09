@@ -56,9 +56,6 @@ export default function App() {
     }
   }, [gameState.moves]);
 
-  console.log("gameState");
-  console.log(gameState);
-
   React.useEffect(() => {
     let newCardsArray = [...cards];
 
@@ -264,10 +261,6 @@ export default function App() {
 
     setCards(newCardsArray);
   }
-
-  console.log("window");
-  console.log(screenSize.dynamicHeight);
-  console.log(screenSize.dynamicWidth);
 
   let cardsElement = cards.map((card) => {
     return (
